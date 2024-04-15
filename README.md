@@ -27,7 +27,7 @@ Description here.
 ## Install
 
 ```bash
-$ npm i egg-minio --save
+$ npm i @wang-yige/egg-minio --save
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ $ npm i egg-minio --save
 // {app_root}/config/plugin.js
 exports.minio = {
   enable: true,
-  package: 'egg-minio',
+  package: '@wang-yige/egg-minio',
 };
 ```
 
