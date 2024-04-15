@@ -6,7 +6,6 @@ declare const rewriteFuncs: [
     'removeBucket',
     'listObjects',
     'listObjectsV2',
-    'listObjectsV2WithMetadata',
     'listIncompleteUploads',
     'getBucketVersioning',
     'setBucketVersioning',
@@ -92,11 +91,15 @@ declare module 'egg' {
         minioBucket: MinioBuckets;
     }
 
+    type MinioConfigOptions = MinioOptions & {
+        buckets: string[]
+    }
+
     interface EggAppConfig {
-        minio: MinioOptions & {
-            client?: MinioOptions;
+        minio: MinioConfigOptions & {
+            client?: MinioConfigOptions;
             clients?: {
-                [key: string]: MinioOptions;
+                [key: string]: MinioConfigOptions;
             };
         };
     }
