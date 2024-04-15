@@ -1,14 +1,16 @@
 {
-  "name": "egg-minio",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@wang-yige/egg-minio",
+  "version": "0.0.1",
+  "description": "eggjs plugin to connect minio",
   "eggPlugin": {
     "name": "minio"
   },
   "keywords": [
     "egg",
     "eggPlugin",
-    "egg-plugin"
+    "egg-plugin",
+    "minio",
+    "minio-js"
   ],
   "dependencies": {
     "minio": "^7.1.3"
@@ -32,13 +34,15 @@
     "ci": "npm run lint && npm run cov"
   },
   "files": [
+    "index.d.ts",
     "app.js",
     "agent.js",
     "config",
-    "app"
+    "app",
+    "lib"
   ],
   "ci": {
-    "version": "16, 18"
+    "version": "16, 18, 20"
   },
   "repository": {
     "type": "git",
@@ -48,6 +52,6 @@
     "url": "https://github.com/wangyige0701/egg-minio/issues"
   },
   "homepage": "https://github.com/wangyige0701/egg-minio#readme",
-  "author": "",
+  "author": "WangYg",
   "license": "MIT"
 }
