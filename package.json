@@ -1,6 +1,6 @@
 {
   "name": "@wang-yige/egg-minio",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "eggjs plugin to connect minio",
   "eggPlugin": {
     "name": "minio"

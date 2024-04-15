@@ -16,7 +16,9 @@ describe('test/minio.test.js', () => {
     afterEach(mock.restore);
 
     it('upload file', async () => {
-        const result = await app.minioBucket['bucket-test'].fPutObject(
+        const minio = app.minio.get('one');
+        const buckets = minio.$bucket;
+        const result = await buckets['bucket-test'].fPutObject(
             Date.now().toString() + '.txt',
             path.join(__dirname, 'hello.txt')
         );

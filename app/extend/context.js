@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    get minioBucket() {
-        return this.app.minioBucket;
+    get minio() {
+        return this.app.minio;
     },
 };
