@@ -5,14 +5,14 @@ type MinioClient = Minio.Client;
 type MinioClientOptions = Minio.ClientOptions;
 
 declare module 'egg' {
-    type ClientWithBucket<T extends string> = MinioClient & {
-        $linkBucket: (bucketName: T) => MinioBucketClient;
+    type ClientWithBucket<T extends string = string> = MinioClient & {
+        $linkBucket: (bucketName: T) => Promise<MinioBucketClient>;
         $bucket: {
-            [key in T as key]: MinioBucketClient;
+            [key in T]: MinioBucketClient;
         }
     };
 
-    type MinioSingleton<T extends string> = {
+    type MinioSingleton<T extends string = string> = {
         clients: Map<string, ClientWithBucket<T>>;
         get (id: string): ClientWithBucket<T>;
     }
@@ -26,7 +26,7 @@ declare module 'egg' {
     }
 
     type MinioConfigOptions = MinioClientOptions & {
-        buckets: string[] | readonly string[];
+        buckets?: string[] | readonly string[];
     }
 
     interface EggAppConfig {

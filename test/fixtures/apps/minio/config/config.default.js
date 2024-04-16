@@ -8,7 +8,6 @@ exports.minio = {
             useSSL: false,
             accessKey: '',
             secretKey: '',
-            buckets: [ 'bucket-test' ],
         },
     },
 };

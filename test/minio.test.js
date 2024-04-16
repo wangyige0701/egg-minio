@@ -1,5 +1,6 @@
 'use strict';
 
+const assert = require('assert');
 const mock = require('egg-mock');
 const path = require('path');
 
@@ -16,19 +17,24 @@ describe('test/minio.test.js', () => {
     afterEach(mock.restore);
 
     it('upload file', async () => {
+        let time = Date.now();
         const minio = app.minio.get('one');
-        const buckets = minio.$bucket;
-        const result = await buckets['bucket-test'].fPutObject(
-            Date.now().toString() + '.txt',
+        const bucketOne = await minio.$linkBucket('bucket-test');
+        const result = await bucketOne.fPutObject(
+            Date.now().toString(),
             path.join(__dirname, 'hello.txt')
         );
         console.log(result);
-        // app.httpRequest()
-        //     .post('/upload')
-        //     .attach('file', 'hello.txt')
-        //     .expect(200)
-        //     .then(response => {
-        //         console.log(response);
-        //     });
+        const first = Date.now() - time;
+        time = Date.now();
+        const bucketTwo = await minio.$linkBucket('bucket-test');
+        const result2 = await bucketTwo.fPutObject(
+            Date.now().toString(),
+            path.join(__dirname, 'hello.txt')
+        );
+        console.log(result2);
+        const second = Date.now() - time;
+        console.log(first, second);
+        assert(second <= first);
     });
 });
